@@ -1,7 +1,4 @@
-"""Structural guarantees every ecosystem package must satisfy.
-
-These tests are copied into every repo from the template and must keep passing.
-"""
+"""Package contract; copied into every repo."""
 
 from __future__ import annotations
 
@@ -14,7 +11,7 @@ import engg_math.template as pkg
 
 
 def test_namespace_is_implicit() -> None:
-    """``engg_math`` must be a PEP 420 namespace so sibling distributions can coexist."""
+    """``engg_math`` is a PEP 420 namespace."""
     assert getattr(engg_math, "__file__", None) is None
 
 

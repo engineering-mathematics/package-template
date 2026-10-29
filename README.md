@@ -22,5 +22,6 @@ uv run lint-imports
 uv run pytest
 ```
 
-CI runs exactly these, plus a lowest-supported-dependency run, a three-OS matrix, a dependency audit,
-CodeQL and build-provenance attestation.
+CI runs these plus a lowest-dependency run, a 3-OS matrix, a dependency audit, CodeQL and a commit-policy check.
+
+Licence: Apache-2.0.

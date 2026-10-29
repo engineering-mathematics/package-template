@@ -1,7 +1,7 @@
 name: Release
 
-# Tag with `vX.Y.Z` (matching pyproject.toml). Publishing requires a manual approval on the
-# `pypi` GitHub Environment, and uses Trusted Publishing (OIDC): no API token exists anywhere.
+# Tag `vX.Y.Z` (must match pyproject.toml). Publish needs approval on the `pypi` environment
+# and uses Trusted Publishing (OIDC); no API token.
 on:
   push:
     tags: ["v[0-9]+.[0-9]+.[0-9]+*"]
@@ -32,10 +32,9 @@ jobs:
     steps:
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with: { name: dist, path: dist/ }
-      - name: Remove SBOM from the upload set (it is attached to the GitHub release instead)
-        run: mv dist/sbom.cdx.json ./sbom.cdx.json
+      - name: Keep the SBOM out of the PyPI upload (attached to the GitHub release)
+        run: rm dist/sbom.cdx.json
       - uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # v1.14.2
-        # Publishes PEP 740 attestations by default.
 
   github-release:
     needs: publish

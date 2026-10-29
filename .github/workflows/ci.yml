@@ -5,7 +5,7 @@ on:
     branches: [main]
   pull_request:
   schedule:
-    - cron: "17 3 * * 1"   # weekly: catches upstream breakage and new advisories
+    - cron: "17 3 * * 1"   # weekly: upstream breakage, new advisories
 
 permissions:
   contents: read

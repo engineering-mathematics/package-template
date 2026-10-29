@@ -1,27 +1,15 @@
-"""Private implementation module. Import from ``engg_math.template`` instead."""
+"""Private implementation. Import from ``engg_math.template``."""
 
 from __future__ import annotations
 
 
 def clamp(value: float, low: float, high: float) -> float:
-    """Restrict ``value`` to the closed interval ``[low, high]``.
-
-    Parameters
-    ----------
-    value
-        The value to restrict.
-    low, high
-        Interval bounds; ``low`` must not exceed ``high``.
-
-    Returns
-    -------
-    float
-        ``value`` if it lies within the interval, otherwise the nearest bound.
+    """Return ``value`` limited to ``[low, high]``.
 
     Raises
     ------
     ValueError
-        If ``low > high`` or any argument is NaN.
+        On NaN input or ``low > high``.
     """
     if value != value or low != low or high != high:  # noqa: PLR0124 - NaN check
         raise ValueError("NaN is not a valid argument")
